@@ -1,0 +1,5 @@
+require('code.comment')
+require('code.illuminate')
+require('code.nulls')
+require('code.surround')
+require('code.treesitter')
