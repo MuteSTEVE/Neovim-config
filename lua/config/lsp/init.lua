@@ -1,0 +1,6 @@
+require('config.lsp.autopairs')
+require('config.lsp.cmp')
+require('config.lsp.diagsign')
+require('config.lsp.lspconfig')
+require('config.lsp.lspsaga')
+require('config.lsp.mason')

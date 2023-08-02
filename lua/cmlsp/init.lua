@@ -1,6 +1,0 @@
-require('cmlsp.cmp')
-require('cmlsp.autopairs')
-require('cmlsp.diagsign')
-require('cmlsp.lspconfig')
-require('cmlsp.mason')
-require('cmlsp.lspsaga')

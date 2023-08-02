@@ -1,11 +1,9 @@
+-- plugin configurations
+require('config')
+
 require('plugins')
 require('options')
 require('keymaps')
-require('cmlsp')
-require('code')
-require('colors')
-require('misc')
-require('ui')
 
 vim.cmd[[colorscheme onedark]]
 
