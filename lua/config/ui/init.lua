@@ -1,6 +1,5 @@
 require('config.ui.alpha')
 require('config.ui.barbecue')
-require('config.ui.breadcrumb')
 require('config.ui.bufferline')
 require('config.ui.cinnamonroll')
 require('config.ui.gitsigns')
