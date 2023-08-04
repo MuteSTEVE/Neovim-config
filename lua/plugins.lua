@@ -115,9 +115,6 @@ return packer.startup(function(use)
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   }
 
-  -- session manager
-  use 'Shatur/neovim-session-manager'
-
   -- noice nvim
   use {
     'folke/noice.nvim',

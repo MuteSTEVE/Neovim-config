@@ -59,9 +59,10 @@ dashboard.section.header.val = vim.split(logo .. "\n" .. greeting, "\n")
 
 dashboard.section.buttons.val = {
 	dashboard.button("f", "󰍉  Open file", ":Telescope find_files <CR>"),
+	dashboard.button("b", "  Open directory", ":Telescope file_browser <CR>"),
 	dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
 	dashboard.button("r", "  Recent files", ":Telescope oldfiles <CR>"),
-	dashboard.button("s", "  Load session", ":SessionManager load_session<cr>"),
+	-- dashboard.button("s", "  Load session", ":SessionManager load_session<cr>"),
 	-- dashboard.button("t", "󰈞  Find text", ":Telescope live_grep <CR>"),
 	-- dashboard.button("l", "󰇚  Install LSP", ":Mason <CR>"),
 	dashboard.button("q", "󰿅  Quit Neovim", ":qa!<CR>"),
