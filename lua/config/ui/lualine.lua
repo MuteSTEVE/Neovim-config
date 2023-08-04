@@ -1,11 +1,16 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
+local lualine_ok, lualine = pcall(require, 'lualine')
+if not lualine_ok then
 	return
 end
 
-local status_ok, navic = pcall(require, "nvim-navic")
-if not status_ok then
+local navic_ok, navic = pcall(require, 'nvim-navic')
+if not navic_ok then
   return
+end
+
+local noice_ok, noice = pcall(require, 'noice')
+if not noice_ok then
+ return
 end
 
 lualine.setup {
@@ -45,7 +50,30 @@ lualine.setup {
         end
       }
     },
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {
+      {
+        noice.api.status.message.get_hl,
+        cond = noice.api.status.message.has,
+      },
+      {
+        noice.api.status.command.get,
+        cond = noice.api.status.command.has,
+        color = { fg = "#ff9e64" },
+      },
+      {
+        noice.api.status.mode.get,
+        cond = noice.api.status.mode.has,
+        color = { fg = "#ff9e64" },
+      },
+      {
+        noice.api.status.search.get,
+        cond = noice.api.status.search.has,
+        color = { fg = "#ff9e64" },
+      },
+      'encoding',
+      'fileformat',
+      'filetype',
+    },
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },

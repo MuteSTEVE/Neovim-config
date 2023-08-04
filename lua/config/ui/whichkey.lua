@@ -96,6 +96,7 @@ local mappings = {
     r = {":Telescope oldfiles<cr>", "Recently opened"},
     n = {":Telescope notify<cr>", "Recently opened"},
     b = {":Telescope file_browser<cr>", "Search in directory"},
+    e = { ":NoiceTelescope<cr>","Error history" }
   },
   p ={
     name = "Packer",

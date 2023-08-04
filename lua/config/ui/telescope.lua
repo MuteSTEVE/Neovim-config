@@ -9,7 +9,8 @@ if not actions_ok then
 end
 
 -- load extensions here
-telescope.load_extension "file_browser"
+telescope.load_extension 'file_browser'
+telescope.load_extension 'noice'
 
 telescope.setup {
   defaults = {
