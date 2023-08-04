@@ -299,6 +299,11 @@ _G.packer_plugins = {
     path = "/home/mutesteve/.local/share/nvim/site/pack/packer/start/stay-centered.nvim",
     url = "https://github.com/arnamak/stay-centered.nvim"
   },
+  ["telescope-file-browser.nvim"] = {
+    loaded = true,
+    path = "/home/mutesteve/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/mutesteve/.local/share/nvim/site/pack/packer/start/telescope.nvim",

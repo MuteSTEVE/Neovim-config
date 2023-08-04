@@ -94,6 +94,7 @@ local mappings = {
     c = {":Telescope colorscheme<cr>", "colorscheme selector"},
     r = {":Telescope oldfiles<cr>", "Recently opened"},
     n = {":Telescope notify<cr>", "Recently opened"},
+    b = {":Telescope file_browser<cr>", "Search in directory"},
   },
   p ={
     name = "Packer",
