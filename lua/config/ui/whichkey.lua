@@ -69,6 +69,7 @@ local setup = {
   },
 }
 local mappings = {
+  m = { ":ToggleTermNcmpcpp<cr>", "Music Player"},
   A = { "<cmd>Alpha<cr>", "Alpha" },
   w = {":w<cr>", "Save"},
   h = {":nohlsearch<cr>", "Remove search"},
