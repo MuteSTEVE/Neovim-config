@@ -154,4 +154,9 @@ return packer.startup(function(use)
   -- leap.nvim
   use 'ggandor/leap.nvim'
 
+  use {
+    'wfxr/minimap.vim',
+    as = 'minimap',
+  }
+
 end)

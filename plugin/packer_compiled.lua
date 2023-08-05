@@ -184,6 +184,11 @@ _G.packer_plugins = {
     path = "/home/mutesteve/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  minimap = {
+    loaded = true,
+    path = "/home/mutesteve/.local/share/nvim/site/pack/packer/start/minimap",
+    url = "https://github.com/wfxr/minimap.vim"
+  },
   ["noice.nvim"] = {
     loaded = true,
     path = "/home/mutesteve/.local/share/nvim/site/pack/packer/start/noice.nvim",
