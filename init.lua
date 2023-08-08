@@ -1,3 +1,5 @@
+vim.o.termguicolors = true
+
 -- plugin configurations
 require('config')
 
@@ -7,6 +9,6 @@ require('keymaps')
 
 vim.cmd[[colorscheme onedark]]
 
-vim.cmd("autocmd ColorScheme * highlight Pmenu guibg=NONE")
+-- vim.cmd("autocmd ColorScheme * highlight Pmenu guibg=NONE")
 
-vim.o.termguicolors = true
+vim.cmd('autocmd VimEnter * set laststatus=3')

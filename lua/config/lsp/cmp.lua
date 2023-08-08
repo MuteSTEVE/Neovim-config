@@ -126,13 +126,12 @@ cmp.setup({
       end
 
       vim_item.abbr = trim(vim_item.abbr)
-
       return vim_item
+
     end,
   },
   sources = {
     { name = "nvim_lsp", keyword_length = 3 },
-    { name = "codeium" },
     { name = "vsnip" },
     { name = "buffer" },
     { name = "path" },

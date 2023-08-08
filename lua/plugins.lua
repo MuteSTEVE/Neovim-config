@@ -44,11 +44,30 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'   -- Packer can manage itself
 
   -- colorscheme
-  use 'navarasu/onedark.nvim'
+  use {
+		'navarasu/onedark.nvim',
+		config = require('config.colorscheme.onedark'),
+    vim.cmd('colorscheme onedark')
+	}
+
+  use {
+    'kkharji/lspsaga.nvim',
+    config = require('config.lsp.lspsaga')
+  }
+
+  use{
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    config = require('config.lsp.mason')
+  }
+
+  use {
+    'hrsh7th/nvim-cmp',
+    config = require('config.lsp.cmp')
+  }
 
   -- Autocomplete and Lsp
   use {
-    'neovim/nvim-lspconfig',
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
     'hrsh7th/vim-vsnip-integ',
@@ -56,58 +75,118 @@ return packer.startup(function(use)
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
-    'hrsh7th/nvim-cmp',
     'rafamadriz/friendly-snippets',
     'onsails/lspkind.nvim',
-    'kkharji/lspsaga.nvim',
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
     'dsznajder/vscode-es7-javascript-react-snippets',
     run = 'yarn install --frozen-lockfile && yarn compile'
   }
 
-  -- requires web-devicons
   use {
     'nvim-lualine/lualine.nvim',
+    config = require('config.ui.lualine')
+  }
+
+  use {
     'nvim-tree/nvim-tree.lua',
+    config = require('config.ui.nvimtree')
+  }
+
+  use {
     'akinsho/bufferline.nvim',
+    config = require('config.ui.bufferline')
+  }
+
+  -- requires web-devicons
+  use {
     'kyazdani42/nvim-web-devicons',
     'utilyre/barbecue.nvim',
     'SmiteshP/nvim-navic',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
-  -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/nvim-treesitter',
-    'windwp/nvim-ts-autotag',
-    'HiPhish/nvim-ts-rainbow2',
-    'windwp/nvim-autopairs',
-    run = ':TSUpdate'
+    run = ':TSUpdate',
+    event = "BufWinEnter"
   }
 
-  -- Single use
   use {
-    'norcalli/nvim-colorizer.lua',
-    'lewis6991/gitsigns.nvim',
-    'lukas-reineke/indent-blankline.nvim',
-    'folke/which-key.nvim',
-    'akinsho/toggleterm.nvim',
-    'terrortylor/nvim-comment',
-    'folke/zen-mode.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
-    'folke/twilight.nvim',
-    'lewis6991/impatient.nvim',
-    'kylechui/nvim-surround'
+    'windwp/nvim-ts-autotag',
+    event = "InsertEnter",
+    after = "nvim-treesitter",
   }
 
+  use {
+    'HiPhish/nvim-ts-rainbow2',
+    after = "nvim-treesitter",
+  }
+
+  -- treesitter
+  use {
+    'windwp/nvim-autopairs',
+    config = require('config.lsp.autopairs')
+  }
   -- telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-lua/plenary.nvim'
     },
+    config = require('config.ui.telescope'),
+  }
+
+  use {
+    'neovim/nvim-lspconfig',
+    config = require('config.lsp.lspconfig')
+  }
+
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = require('config.colorizer'),
+    event = "BufRead",
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup{
+        current_line_blame = true
+      }
+    end
+  }
+
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = require('config.ui.indentblankline'),
+  }
+
+  use {
+    'akinsho/toggleterm.nvim',
+    config = require('config.ui.toggleterm')
+  }
+
+  use {
+    'terrortylor/nvim-comment',
+    config = require('config.comment')
+  }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = require('config.nulls')
+  }
+
+  use {
+    'folke/which-key.nvim',
+    config = require('config.ui.whichkey')
+  }
+
+  -- Single use
+  use {
+    'folke/zen-mode.nvim',
+    'folke/twilight.nvim',
+    'lewis6991/impatient.nvim',
+    'kylechui/nvim-surround'
   }
 
   use {
@@ -142,21 +221,17 @@ return packer.startup(function(use)
   use {
     'goolord/alpha-nvim', branch = 'feature/startify-fortune',
     'BlakeJC94/alpha-nvim-fortune',
-    requires = {'BlakeJC94/alpha-nvim-fortune'},
+    event = "BufRead",
+    config = require('config.ui.alpha'),
+    requires = {
+      'BlakeJC94/alpha-nvim-fortune'
+    },
   }
-
-  -- hslsens
-  use 'kevinhwang91/nvim-hlslens'
 
   -- flash.nvim
   use 'folke/flash.nvim'
 
   -- leap.nvim
   use 'ggandor/leap.nvim'
-
-  use {
-    'wfxr/minimap.vim',
-    as = 'minimap',
-  }
 
 end)
