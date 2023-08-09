@@ -41,6 +41,7 @@ nvim_tree.setup ({
   },
   renderer = {
     indent_markers = { enable = true },
+    root_folder_modifier = ":t",
     highlight_git = true,
     icons = {
       show = {

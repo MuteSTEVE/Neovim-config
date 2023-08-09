@@ -8,6 +8,14 @@ if not status_ok then
   return
 end
 
+-- Function to run a shell command and capture its output
+local function capture_shell_command(command)
+    local handle = io.popen(command)
+    local result = handle:read("*a")
+    handle:close()
+    return result:gsub("\n$", "") -- Remove trailing newline
+end
+
 vim.opt.termguicolors = true
 
 bufferline.setup {
@@ -44,7 +52,7 @@ bufferline.setup {
     offsets = {
       {
         filetype = 'NvimTree',
-        text = ' NvimTree',
+        text = capture_shell_command("bash -c 'pwd'"), -- Run 'bash command pwd'
         highlight = 'Directory',
         text_align = 'center',
       },

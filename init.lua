@@ -1,7 +1,7 @@
 vim.o.termguicolors = true
 
 -- plugin configurations
-require('config')
+-- require('config')
 
 require('plugins')
 require('options')

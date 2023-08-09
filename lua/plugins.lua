@@ -47,7 +47,7 @@ return packer.startup(function(use)
   use {
 		'navarasu/onedark.nvim',
 		config = require('config.colorscheme.onedark'),
-    vim.cmd('colorscheme onedark')
+    --vim.cmd('colorscheme onedark')
 	}
 
   use {
@@ -56,18 +56,13 @@ return packer.startup(function(use)
   }
 
   use{
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
     config = require('config.lsp.mason')
   }
 
   use {
     'hrsh7th/nvim-cmp',
-    config = require('config.lsp.cmp')
-  }
-
-  -- Autocomplete and Lsp
-  use {
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
     'hrsh7th/vim-vsnip-integ',
@@ -78,7 +73,8 @@ return packer.startup(function(use)
     'rafamadriz/friendly-snippets',
     'onsails/lspkind.nvim',
     'dsznajder/vscode-es7-javascript-react-snippets',
-    run = 'yarn install --frozen-lockfile && yarn compile'
+    run = 'yarn install --frozen-lockfile && yarn compile',
+    config = require('config.lsp.cmp')
   }
 
   use {
@@ -96,11 +92,19 @@ return packer.startup(function(use)
     config = require('config.ui.bufferline')
   }
 
+  use {
+    'utilyre/barbecue.nvim',
+    config = require('config.ui.barbecue')
+  }
+
+  use {
+    'SmiteshP/nvim-navic',
+    config = require('config.ui.navic')
+  }
+
   -- requires web-devicons
   use {
     'kyazdani42/nvim-web-devicons',
-    'utilyre/barbecue.nvim',
-    'SmiteshP/nvim-navic',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
@@ -108,31 +112,32 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    event = "BufWinEnter"
+    event = 'BufWinEnter',
+    config = require('config.treesitter')
   }
 
   use {
     'windwp/nvim-ts-autotag',
-    event = "InsertEnter",
-    after = "nvim-treesitter",
+    event = 'InsertEnter',
+    after = 'nvim-treesitter',
   }
 
   use {
     'HiPhish/nvim-ts-rainbow2',
-    after = "nvim-treesitter",
+    after = 'nvim-treesitter',
   }
 
   -- treesitter
   use {
     'windwp/nvim-autopairs',
-    config = require('config.lsp.autopairs')
+    config = require('config.autopairs')
   }
+
   -- telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
+    'nvim-telescope/telescope-file-browser.nvim',
+    'nvim-lua/plenary.nvim',
     config = require('config.ui.telescope'),
   }
 
@@ -144,16 +149,11 @@ return packer.startup(function(use)
   use {
     'norcalli/nvim-colorizer.lua',
     config = require('config.colorizer'),
-    event = "BufRead",
   }
 
   use {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup{
-        current_line_blame = true
-      }
-    end
+    config = require('config.ui.gitsigns')
   }
 
   use {
@@ -183,45 +183,56 @@ return packer.startup(function(use)
 
   -- Single use
   use {
-    'folke/zen-mode.nvim',
-    'folke/twilight.nvim',
     'lewis6991/impatient.nvim',
-    'kylechui/nvim-surround'
+    config = require('config.impatient')
   }
 
   use {
-    "nvim-telescope/telescope-file-browser.nvim",
-    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    'kylechui/nvim-surround',
+    config = require('config.surround')
+  }
+
+  use {
+    'folke/zen-mode.nvim',
+    config = require('config.ui.zen')
+  }
+
+  use {
+    'folke/twilight.nvim',
+    config = require('config.ui.twilight')
+  }
+
+  use {
+    'rcarriga/nvim-notify',
+    config = require('config.ui.notify')
   }
 
   -- noice nvim
   use {
     'folke/noice.nvim',
-    'MunifTanjim/nui.nvim',
-    'rcarriga/nvim-notify',
-    require = {
+    requires = {
       'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify'
-    }
+    },
+    config = require('config.ui.noice')
   }
 
   -- nvim illuminate
-  use 'RRethy/vim-illuminate'
-
-  -- harpoon
-  use 'theprimeagen/harpoon'
+  use{
+    'RRethy/vim-illuminate',
+    config = require('config.illuminate')
+  }
 
   -- centered cursorline
-  use "arnamak/stay-centered.nvim"
-
-  -- cinnaom-roll
-  use 'declancm/cinnamon.nvim'
+  use{
+    'arnamak/stay-centered.nvim',
+    config = require('config.ui.staycenter')
+  }
 
   -- alpha startify-fortune
   use {
     'goolord/alpha-nvim', branch = 'feature/startify-fortune',
     'BlakeJC94/alpha-nvim-fortune',
-    event = "BufRead",
+    event = 'BufRead',
     config = require('config.ui.alpha'),
     requires = {
       'BlakeJC94/alpha-nvim-fortune'
@@ -229,9 +240,15 @@ return packer.startup(function(use)
   }
 
   -- flash.nvim
-  use 'folke/flash.nvim'
+  use{
+    'folke/flash.nvim',
+    config = require('config.flash')
+  }
 
   -- leap.nvim
-  use 'ggandor/leap.nvim'
+  use{
+    'ggandor/leap.nvim',
+    config = require('config.leap')
+  }
 
 end)
