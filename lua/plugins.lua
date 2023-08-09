@@ -119,12 +119,10 @@ return packer.startup(function(use)
   use {
     'windwp/nvim-ts-autotag',
     event = 'InsertEnter',
-    after = 'nvim-treesitter',
   }
 
   use {
     'HiPhish/nvim-ts-rainbow2',
-    after = 'nvim-treesitter',
   }
 
   -- treesitter
