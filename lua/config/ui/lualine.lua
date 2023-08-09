@@ -13,6 +13,16 @@ if not noice_ok then
  return
 end
 
+-- cool function for progress
+local progress_bar = function()
+	local current_line = vim.fn.line(".")
+	local total_lines = vim.fn.line("$")
+	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+	local line_ratio = current_line / total_lines
+	local index = math.ceil(line_ratio * #chars)
+	return chars[index]
+end
+
 lualine.setup {
   options = {
     icons_enabled = true,
@@ -41,34 +51,10 @@ lualine.setup {
     transparent = true,
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {'filename',},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {
-      {'filename',
-        function()
-          return navic.get_location()
-        end,
-        cond = function()
-          return navic.is_available()
-        end
-      }
-    },
-    lualine_x = {
-      -- {
-      --   noice.api.status.message.get_hl,
-      --   cond = noice.api.status.message.has,
-      -- },
-      -- {
-      --   noice.api.status.command.get,
-      --   cond = noice.api.status.command.has,
-      --   color = { fg = "#ff9e64" },
-      -- },
-      -- {
-      --   noice.api.status.mode.get,
-      --   cond = noice.api.status.mode.has,
-      --   color = { fg = "#ff9e64" },
-      -- },
-      {
+    lualine_c = {},
+    lualine_x = {{
         noice.api.status.search.get,
         cond = noice.api.status.search.has,
         color = { fg = "#ff9e64" },
@@ -78,7 +64,7 @@ lualine.setup {
       'filetype',
     },
     lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_z = {'location', progress_bar}
   },
   inactive_sections = {
     lualine_a = {},

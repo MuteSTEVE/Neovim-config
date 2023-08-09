@@ -69,6 +69,10 @@ local setup = {
   },
 }
 local mappings = {
+  b = {
+    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "Buffers",
+  },
   m = { ":ToggleTermNcmpcpp<cr>", "Music Player"},
   A = { "<cmd>Alpha<cr>", "Alpha" },
   w = {":w<cr>", "Save"},
@@ -77,11 +81,7 @@ local mappings = {
   x = {":bd<cr>", "Close buffer"},
   n = {":NvimTreeToggle<cr>", "NvimTree explorer"},
   Z = {":ZenMode<cr>", "ZenMode"},
-  q = {
-    Q = {":quitall<cr>", "Rage quit"},
-    q = {":q!<cr>", "Force quit"},
-    w = {":wq<cr>", "Save quit"}
-  },
+  Q = {":quitall<cr>", "Rage quit"},
   S = {
     name = "Session manager",
     s = {":SessionManager save_current_session<cr>", "Save current session"},
